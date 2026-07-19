@@ -1,0 +1,32 @@
+body {
+    background: #ddd;
+    color: #eee;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+canvas {
+    image-rendering: pixelated ;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.grid-container {
+    position: relative;
+}
+.grid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("grid.png");
+    opacity: 0.4;
+    z-index: 2;
+    pointer-events: none;
+}
