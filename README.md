@@ -1,5 +1,5 @@
 # Sophie's Game of Life
-![video.webm](docs/video.webm)
+![video.webm](docs/video.gif)
 
 An implementation of Conway's Game of Life in JavaScript.
 
