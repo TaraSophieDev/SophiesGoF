@@ -2,10 +2,12 @@ const doStepButton = document.querySelector("#doStep");
 const doPlayButton = document.querySelector("#doPlay");
 const doResetButton = document.querySelector("#doReset");
 const doClearButton = document.querySelector("#doClear");
+const cornersAliveCheckbox = document.querySelector("#cornersAliveCheckbox");
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
 
 let isPlaying = false;
+let cornersAlive = cornersAliveCheckbox.checked;
 
 
 let canvasScale = 8;
@@ -51,14 +53,14 @@ function step() {
     for (let x = 0; x < canvasWidth; x++) {
         for (let y = 0; y < canvasHeight; y++) {
             let cell = cellArray[x][y];
-            const neighborLeft = cellArray[x-1]?.[y] ?? false;
-            const neighborTopLeft = cellArray[x-1]?.[y-1] ?? false;
-            const neighborBottomLeft = cellArray[x-1]?.[y+1] ?? false;
-            const neighborBottom = cellArray[x]?.[y+1] ?? false;
-            const neighborBottomRight = cellArray[x+1]?.[y+1] ?? false;
-            const neighborRight = cellArray[x+1]?.[y] ?? false;
-            const neighborTopRight = cellArray[x+1]?.[y-1] ?? false;
-            const neighborTop = cellArray[x]?.[y-1] ?? false;
+            const neighborLeft = cellArray[x-1]?.[y] ?? cornersAlive;
+            const neighborTopLeft = cellArray[x-1]?.[y-1] ?? cornersAlive;
+            const neighborBottomLeft = cellArray[x-1]?.[y+1] ?? cornersAlive;
+            const neighborBottom = cellArray[x]?.[y+1] ?? cornersAlive;
+            const neighborBottomRight = cellArray[x+1]?.[y+1] ?? cornersAlive;
+            const neighborRight = cellArray[x+1]?.[y] ?? cornersAlive;
+            const neighborTopRight = cellArray[x+1]?.[y-1] ?? cornersAlive;
+            const neighborTop = cellArray[x]?.[y-1] ?? cornersAlive;
 
             let aliveNeighbors = 0;
             if (neighborLeft) aliveNeighbors++;
@@ -137,6 +139,10 @@ doResetButton.addEventListener('click', (e) => {
 doClearButton.addEventListener('click', (e) => {
     init();
     draw();
+})
+
+cornersAliveCheckbox.addEventListener('change', (e) => {
+    cornersAlive = cornersAliveCheckbox.checked;
 })
 
 setInterval(() => {

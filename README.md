@@ -1,4 +1,5 @@
 # Sophie's Game of Life
+## ⚠️⚠️Might cause flashing lights!⚠️⚠️
 ![video.webm](docs/video.gif)
 
 An implementation of Conway's Game of Life in JavaScript.
